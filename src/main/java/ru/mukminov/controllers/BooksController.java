@@ -67,7 +67,7 @@ public class BooksController {
         return "books/edit";
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/{id}")
     public String update(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
@@ -77,19 +77,19 @@ public class BooksController {
         return "redirect:/books";
     }
 
-    @DeleteMapping("/{id}")
+    @PostMapping("/{id}/delete")
     public String delete(@PathVariable("id") int id) {
         bookDAO.delete(id);
         return "redirect:/books";
     }
 
-    @PatchMapping("/{id}/release")
+    @PostMapping("/{id}/release")
     public String release(@PathVariable("id") int id) {
         bookDAO.release(id);
         return "redirect:/books/" + id;
     }
 
-    @PatchMapping("/{id}/assign")
+    @PostMapping("/{id}/assign")
     public String assign(@PathVariable("id") int id, @ModelAttribute("person") Person selectedPerson) {
         bookDAO.assign(id, selectedPerson);
         return "redirect:/books/" + id;
