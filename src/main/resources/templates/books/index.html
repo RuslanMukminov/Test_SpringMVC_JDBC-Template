@@ -6,15 +6,21 @@
 </head>
 <body>
 
+<hr/>
+<p><a href="/people">Список читателей</a></p>
+
+<hr/>
+<p></p><a href="/books/new">Добавить книгу</a><p/>
+<hr/>
+
+<p>Список книг: </p>
 <div th:each="book : ${books}">
   <a th:href="@{/books/{id}(id=${book.getId()})}"
      th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</a>
 </div>
 
 <br/>
-<hr/>
 
-<a href="/books/new">Добавить книгу</a>
 
 </body>
 </html>

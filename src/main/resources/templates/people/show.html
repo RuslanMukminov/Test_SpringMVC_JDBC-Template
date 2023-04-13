@@ -18,7 +18,8 @@
   <b>Книги:</b>
   <br/>
   <table th:each="book : ${books}">
-    <tr th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</tr>
+  <tr><a th:href="@{/books/{id}(id=${book.getId()})}"
+         th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</a></tr>
   </table>
   <hr/>
 </div>
@@ -30,6 +31,9 @@
 <form th:method="DELETE" th:action="@{/people/{id}/delete(id=${person.getId()})}">
   <input type="submit" value="Удалить"/>
 </form>
+
+<hr/>
+<p><a href="/people">Список читателей</a></p>
 
 </body>
 </html>
